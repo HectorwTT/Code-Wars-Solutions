@@ -1,0 +1,25 @@
+public class Kata {// creates a cipher using ROT13 and encrypting numbers so that 5 is added to each number 
+	public static String ROT135(String input)
+	{
+		 String []characters = input.split("");
+     String [] codes = new String[characters.length];
+     for(int i =0;i<codes.length;i++){
+       char ch = characters[i].charAt(0);
+       if ((ch>=65 && ch<=90)||(ch>=97 && ch<=122)){//shift letters by 13
+         int ch1= ch;
+         int newcode=0;
+         if((ch1<=77 && ch >=65)|| (ch<=109 && ch>=97)) newcode= ch1+13;// rotate the shift -z will become m, etc
+         else newcode=ch1-13;
+         char newletter =(char)newcode;
+         String str =""+newletter;
+         codes[i]= str;
+       } else if(ch>=48 && ch <=57){// shift numbers by 5
+            int value = ch-48+5;
+            if(value>=10)value = value-10;//rotate - 5 becomes 0,6 becomes 1 ,etc
+            String str1=""+value;
+            codes[i] = str1;
+          } else codes[i]= characters[i];
+      } 
+     return String.join("",codes);
+	}
+}
