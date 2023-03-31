@@ -1,0 +1,19 @@
+class Solution {
+  public static String rot13(String message) {// shifts each letter by 13
+      String []characters = message.split("");
+      String [] codes = new String[characters.length];
+      for(int i =0;i<codes.length;i++){
+       char ch = characters[i].charAt(0);
+       if((ch>=65 && ch<=90)||(ch>=97 && ch<=122)){// only encode letters
+         int ch1= ch;
+         int newcode=0;
+         if((ch1<=77 && ch >=65)|| (ch<=109 && ch>=97)) newcode= ch1+13;//rotate letters for lower half, n becomes a , o becomes b,etc
+         else newcode=ch1-13;
+         char newletter =(char)newcode;
+         String str =""+newletter;
+         codes[i]= str;
+       } else codes[i]= characters[i];
+     }
+     return String.join("",codes);   
+   }
+}
