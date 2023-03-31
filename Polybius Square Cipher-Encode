@@ -1,0 +1,49 @@
+import java.util.HashMap;
+public class Solution {
+    public static String polybius(String text) {
+        HashMap <String,String> map = new HashMap<String,String>();
+        map.put("A","11");
+        map.put("B","12");
+        map.put("C","13");
+        map.put("D","14");
+        map.put("E","15");
+        map.put("F","21");
+        map.put("G","22");
+        map.put("H","23");
+        map.put("I/J","24");
+        map.put("K","25");
+        map.put("L","31");
+        map.put("M","32");
+        map.put("N","33");
+        map.put("O","34");
+        map.put("P","35");
+         map.put("Q","41");
+        map.put("R","42");
+        map.put("S","43");
+        map.put("T","44");
+        map.put("U","45");
+         map.put("V","51");
+        map.put("W","52");
+        map.put("X","53");
+        map.put("Y","54");
+        map.put("Z","55");
+        String encrypted ="";
+         String text1= text.toUpperCase();
+         for(int i =0;i<text1.length();i++){
+           char c = text1.charAt(i);
+           String key = "";
+           if (c=='I' || c =='J') key ="I/J";
+           else key+= c;
+           if(map.containsKey(key)){
+             
+             String value = map.get(key);
+             encrypted += value;
+           }
+           else encrypted += c;
+           
+           
+           
+         }
+      return encrypted;
+    }
+}
