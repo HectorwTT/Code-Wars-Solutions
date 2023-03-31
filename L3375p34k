@@ -1,0 +1,33 @@
+import java.util.HashMap;
+public class Leetspeak extends Encoder{
+  private HashMap<Character,String> dictionary = new HashMap<Character, String>();//create a hashmap which will act as a cipher. it will encode certain letters
+  public Leetspeak(){// construct the cipher
+      dictionary.put('a',"4");
+      dictionary.put('e',"3");
+      dictionary.put('l',"1");
+      dictionary.put('m',"/^^\\");
+      dictionary.put('o',"0");
+      dictionary.put('u',"(_)");
+      dictionary.put('A',"4");
+      dictionary.put('E',"3");
+      dictionary.put('L',"1");
+      dictionary.put('M',"/^^\\");
+      dictionary.put('O',"0");
+      dictionary.put('U',"(_)");  
+    }
+   public String encode(String source){
+    // Encode the source string into a 133tSp34k string
+    if (source == null || source.equals("")) return "";
+    String code="";
+    for(int i=0;i<source.length();i++){
+      char c =source.charAt(i);
+      if(!dictionary.containsKey(c))code+=c;
+      else code+=dictionary.get(c);
+    }
+    return code;
+  }
+}
+
+abstract class Encoder{
+  public abstract String encode(String source);
+}
