@@ -1,0 +1,61 @@
+import java.util.*;
+public class CaesarCipher {
+  public static List<String>  movingShift(String s, int shift) {
+    int length = s.length();//get length
+    String encrypted ="";
+    List <String>  code =new ArrayList<String>();  //to store codes
+    for(int i =0; i<length;i++){
+      char c = s.charAt(i);//get each character
+      int c1 = c;
+      if((c1>=65 && c1<=90)||(c1 >=97 && c1 <=122)){// if character is letter
+        int newShift = shift +i;// get shift for each character depending on its position
+        int modShift = newShift % 26;// adjust shift when the value is more than 26
+        int val = c + modShift; 
+        if (val >122 && (c1 >=97 && c1 <=122)) val = val -26;// if it is a capital letter and the resulting character falls outside of the alphabet adjust
+        if ((val >90) &&  (c1 >=65 && c1<=90) ) val = val-26;//if it is a lowercase letter do the same 
+        char newchar= (char) val;
+        encrypted +=newchar;
+      } else encrypted += c;//add non alphabetic characters
+      
+    }
+      int i = encrypted.length();
+      int lengthcode ;
+      int modcode = i%5;
+      if (modcode !=0 ) lengthcode = i/5 +1;
+      else lengthcode= i/5;
+      //break the encrypted string to 5 parts
+      String firstcode = encrypted.substring(0,lengthcode);
+      String secondcode = encrypted.substring(lengthcode,2*lengthcode);
+      String thirdcode = encrypted.substring(2*lengthcode,3*lengthcode);
+       String fourthcode = encrypted.substring(3*lengthcode,4*lengthcode);
+      String fifthcode = encrypted.substring(4*lengthcode,i);
+       code.add(firstcode);
+       code.add(secondcode);
+       code.add(thirdcode);
+       code.add (fourthcode);
+       code.add(fifthcode);//add to a list
+       return code;
+}
+	
+public static String  demovingShift(List<String> s, int shift) {
+    String decrypted ="";
+    String encrypted ="";
+    for (int i=0;i<s.size();i++){//add the different parts of the message to get the full encrypted string
+      String code = s.get(i);
+      encrypted += code;
+     }
+    for (int j=0; j<encrypted.length();j++){//decryption process
+      char c = encrypted.charAt(j);
+      if((c>=65 && c<=90)||(c>=97 && c<=122 )){// if it is a letter, shift upward to get original letter
+        int newShift = shift +j;
+        int modShift = newShift % 26;
+        int val = c - modShift;
+        if(val <65 && (c>=65 && c<=90)) val = val +26;
+        if (val < 97 && (c>=97 && c<=122)) val = val+26;
+        char newchar= (char) val;
+        decrypted +=newchar;
+      }else decrypted +=c;
+    }
+    return decrypted;
+    }
+}
