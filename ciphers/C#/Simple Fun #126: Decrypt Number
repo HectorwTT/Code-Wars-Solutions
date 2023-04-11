@@ -1,0 +1,40 @@
+namespace myjinxin
+{
+    using System;
+    using System.Numerics;
+    
+    public class Kata
+    {
+        public string Decrypt(string s){
+          string s1= "";
+          string s2 ="";
+          
+          for(int i=1;i<=10;i++){
+            s1 =i+s;
+            int mod=0;
+            s2="";
+            for(int j=0;j<s1.Length;j++){
+              char c = s1[j];
+              int val = c-48;
+              val = (mod *10) + val;
+              int val1 = val/11;
+              string s3 =""+val1;
+              s2 +=s3;
+              mod = val%11;
+            }
+            if (mod ==0){
+              char ch1 = s2[0];
+              while(ch1=='0'){
+                s2 = s2.Substring(1);
+                ch1= s2[0];
+                
+              }
+              return s2;
+            }
+            
+             
+          }
+          return "impossible";
+        }
+    }
+}
