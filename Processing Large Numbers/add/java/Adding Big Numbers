@@ -1,0 +1,42 @@
+public class Kata {
+  public static String add(String a, String b) {
+     String zero ="0";
+     String newnum ="";
+     String newnum1="";
+     if(a.length()<b.length()){
+        String pad =zero.repeat(b.length()-a.length());
+        newnum = pad +a;
+        newnum1 = b;
+      }
+    else if(a.length()>b.length()){
+        String pad =zero.repeat(a.length()-b.length());
+        newnum = pad +b;
+        newnum1 =a;
+      }
+    else{
+      newnum =a;
+      newnum1=b;
+    }
+    char[] digits1 = newnum.toCharArray();
+    char [] digits2= newnum1.toCharArray();
+    char [] sum = new char[digits1.length];
+    
+    int carryover=0;
+    for(int j = digits1.length-1;j>=0;j--){
+      int addResult = digits1[j]-48 + digits2[j]-48 +carryover;
+      if (addResult >= 10){
+        addResult = addResult-10;
+        sum[j]= (char)(addResult+'0');
+        carryover=1;
+      }else{
+        sum[j]= (char)(addResult+'0');
+        carryover=0;
+      }
+    }
+   
+    String result = String.valueOf(sum);
+     if (carryover ==1)  result ="1"+ result;
+     if (result.charAt(0)=='0') result =result.substring(1);
+     return result;
+  }
+}
