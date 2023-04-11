@@ -1,0 +1,19 @@
+function caesarEncode(phrase, shift) {
+   let ciphertext ="";
+   for(let i=0;i<phrase.length;i++){
+     let ch = phrase.charAt(i);
+     if (ch==' '){
+       ciphertext+=ch;
+       shift++;
+     } 
+     else {
+       let ch1 = phrase.charCodeAt(i);
+       let ch2 = ch1 +shift%26;
+       if((ch2 >90 && ch2 <97) ||(ch2>122)) ch2= ch2-26;
+       let newchar = String.fromCharCode(ch2);
+       ciphertext += newchar;
+     }
+   }
+  return ciphertext;
+  
+}
