@@ -1,0 +1,18 @@
+function encrypter(string){
+  //your code here
+  let ciphertext ="";
+  for(let i=0;i<string.length;i++){
+    let ch = string.charAt(i);
+    if (ch == ' ') ciphertext += ch;
+    else{
+      let ch1 = string.charCodeAt(i);
+    let ch2 = ch1 +13;
+    if (ch2 > 122) ch2 = ch2-26;
+    let ch3 = 122-(ch2-97);
+    let ch4 = String.fromCharCode(ch3);
+    ciphertext+=ch4;
+    }
+    
+  }
+  return ciphertext;
+}
