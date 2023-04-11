@@ -1,0 +1,74 @@
+import java.util.Arrays;
+public class Kata
+{
+    public static long nextBiggerNumber(long n)
+    {
+      if (n<10) return -1;
+      if (hasSamedigits(n)) return -1;
+      if (isDescendingOrder(n)) return -1;
+      long sum1= getSumOfDigits(n);
+      long sum2=0;
+      long x=n;
+      boolean stop= false;
+      while (!stop){
+        x++;
+        sum2= getSumOfDigits(x);
+        
+        stop = (sum1 == sum2 && isAnagram(n,x));
+      }
+      return x;
+    }
+    
+    public static boolean hasSamedigits(long n){
+      String str=""+n;
+      int length= str.length();
+      int fdigit = Character.getNumericValue(str.charAt(0));
+      String str2=""+fdigit;
+      String str1= str2.repeat(length);
+      return str.equals(str1);
+      
+    }
+  
+   public static boolean isDescendingOrder(long n){
+      String str=""+n;
+      int length= str.length();
+      int fdigit = Character.getNumericValue(str.charAt(0));
+      int sdigit = Character.getNumericValue(str.charAt(1));
+      boolean isDescending = fdigit > sdigit;
+      if(isDescending == true){
+        for(int i=2;i<str.length();i++){
+        int curr = Character.getNumericValue(str.charAt(i));
+        int prev = Character.getNumericValue(str.charAt(i-1));
+        if(curr >= prev) {
+          isDescending = false;
+          break;
+        }
+      }
+      }
+      
+      return isDescending;
+      
+    }
+   public static long getSumOfDigits(long n){
+      long num =n;
+      long sum = 0;
+      while (num !=0){
+        long mod = num%10;
+        sum+=mod;
+        num/=10;
+        
+      }
+      return sum;
+    }
+   public static boolean isAnagram(long sum1,long sum2) {
+     String s1 = String.valueOf(sum1);
+    char[] c1 = s1.toCharArray();
+    Arrays.sort(c1);
+ 
+    String s2 = String.valueOf(sum2);
+    char[] c2 = s2.toCharArray();
+    Arrays.sort(c2);
+ 
+    return(Arrays.equals(c1,c2));
+  }
+}
