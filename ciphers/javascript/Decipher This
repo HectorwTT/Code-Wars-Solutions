@@ -1,0 +1,37 @@
+function decipherThis(str) {
+   let plaintext="";
+   const myArray = str.split(" ");
+   for(let i=0;i<myArray.length;i++){
+     let word = myArray[i];
+     let secondchar = word.charAt(word.length-1);
+     let digit ="";
+     let newword ="";
+     let isDigit = true;
+     let j =0;
+     while(isDigit){
+       let ch= word.charAt(j);
+       let chval = word.charCodeAt(j);
+       if(chval>=48 && chval <=57){
+         digit +=ch;
+         j++;
+       }
+       else {
+         let firstchar = String.fromCharCode(parseInt(digit));
+         let lastchar = word.charAt(j);
+         if (lastchar=='') plaintext+=firstchar+" ";
+         else {
+           let newword ="";
+            if(word.length == digit.length+1){
+              newword += firstchar+lastchar;
+            }
+           else{
+             newword = firstchar + secondchar + word.substring(j+1,word.length-1)+lastchar;
+           }
+         plaintext += newword +" ";         
+         }
+        isDigit = false;
+       }
+     }
+   }
+     return plaintext.trim();
+}; 
