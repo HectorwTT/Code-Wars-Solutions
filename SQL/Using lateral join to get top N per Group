@@ -1,0 +1,9 @@
+select c.id as category_id,category,p.title  as title,p.views:: integer as views,p.post_id::integer as post_id
+from categories c  left join lateral (
+select category_id,title,views,id as post_id
+  from posts
+  where c.id = category_id
+  order by views desc,id 
+  fetch first 2 rows only
+  ) p  on true
+order by c.category ,views desc,id
