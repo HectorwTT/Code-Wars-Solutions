@@ -1,0 +1,21 @@
+function rot13(message){
+  let cipher ="";
+  for(let i=0;i<message.length;i++){
+    let ch = message.charCodeAt(i);
+    if((ch >=65 && ch<=90) || (ch>=97 && ch <=122)){
+      let ch1 =0;
+      let  newchar ='';
+      if((ch < 78 && ch >=65)|| (ch <110 && ch>=97)){
+       ch1 = ch+13;   
+      }
+      else{
+        if((ch>=78 && ch <=90 )|| (ch >=110 && ch <=122))
+        ch1 = ch-13;
+      }
+      newchar = String.fromCharCode(ch1);
+      cipher+=newchar;
+    }
+    else cipher +=String.fromCharCode(ch);
+  }
+  return cipher;
+}
