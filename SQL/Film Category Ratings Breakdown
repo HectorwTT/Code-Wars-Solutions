@@ -1,0 +1,12 @@
+select t1.category_name,t1.film_rating,round(count1/total,5) * 100 :: Numeric as percentage
+from
+(select t.category_name,t.film_rating,sum(t.count1)as count1,sum(count1) over(partition by category_name)total
+from
+(select category.name as category_name,film.rating as film_rating,count(film.rating)as count1
+from film inner join film_category on film.film_id = film_category.film_id
+inner join category on film_category.category_id=category.category_id
+group by category.name,film.rating
+order by category.name,film.rating desc) t
+group by t.category_name,t.film_rating,count1
+order by t.category_name)t1
+order by t1.category_name,percentage desc,t1.film_rating
