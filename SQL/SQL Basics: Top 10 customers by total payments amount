@@ -1,0 +1,5 @@
+select 
+customer.customer_id,customer.email,count(payment.*) as payments_count,cast(sum(payment.amount)as float) as total_amount
+from payment  inner join customer on payment.customer_id= customer.customer_id
+group by customer.customer_id,customer.email
+order by total_amount desc limit 10;
