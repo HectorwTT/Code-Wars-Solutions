@@ -1,0 +1,21 @@
+function asciiEncrypt(plaintext) {
+    let ciphertext ="";
+    for(let i=0;i<plaintext.length;i++){
+      let ch = plaintext.charCodeAt(i);
+      ch = ch+i;
+      let ch1 = String.fromCharCode(ch);
+      ciphertext+=ch1;
+    }
+  return ciphertext;
+}
+    
+function asciiDecrypt(ciphertext) {
+    let plaintext ="";
+    for(let i=0;i<ciphertext.length;i++){
+      let ch = ciphertext.charCodeAt(i);
+      ch = ch-i;
+      let ch1 = String.fromCharCode(ch);
+      plaintext+=ch1;
+    }
+  return plaintext;
+}
