@@ -1,0 +1,22 @@
+const Substitution = () => {
+  return {
+    Encrypt: (word) => {
+      let cipher ="";
+      for (let i=0;i<word.length;i++){
+        let ch = word.charCodeAt(i)+58;
+         cipher+=ch;
+      }
+      return cipher;
+    },
+    Decrypt: (word) => {
+      let plain="";
+      for(let i=0;i<word.length;i=i+3){
+        let str = word.substring(i,i+3);
+        let val = parseInt(str)-58;
+        let ch = String.fromCharCode(val);
+        plain +=ch;
+      }
+      return plain;
+    }
+  };
+};
