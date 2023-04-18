@@ -1,0 +1,7 @@
+select f.actor_id,f.full_name ,f.film_title from
+(select actor.actor_id,first_name||' '||last_name as full_name,title as film_title,film_actor.film_id,rank() over(partition by actor.actor_id order by film_actor.film_id desc)recent
+from film inner join film_actor on film.film_id = film_actor.film_id
+inner join actor on film_actor.actor_id= actor.actor_id 
+where first_name like'J%'
+order by actor.actor_id,film_actor.film_id desc) f
+where f.recent =1
