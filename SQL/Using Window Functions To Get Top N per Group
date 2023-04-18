@@ -1,0 +1,11 @@
+select p.category_id,p.category,p.title,p.views ,p.post_id 
+from 
+(select categories.id as category_id,category,title,posts.views as views,posts.id as post_id,
+RANK () OVER ( 
+		PARTITION BY categories.id
+		ORDER BY category,views desc,posts.id 
+	) rank
+from categories left outer join posts on posts.category_id = categories.id
+group by categories.id,category,title,posts.views,posts.id)p
+where p.rank <=2
+order by p.category,p.views desc,p.post_id;
