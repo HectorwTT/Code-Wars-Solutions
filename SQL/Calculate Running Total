@@ -1,0 +1,5 @@
+select p.date,p.count,sum(p.count) over(order by p.date):: int as total
+from
+(select date(created_at) as date, count(created_at) as count
+ from posts group by date(created_at))p
+order by date;
