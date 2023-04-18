@@ -1,0 +1,8 @@
+select t.store_id,t.category,t.num_rentals from(select store.store_id,name as category,count(rental_id)as num_rentals,rank() over (partition by store.store_id order by count(rental_id)desc,name ) as nth
+from store inner join inventory on inventory.store_id = store.store_id
+inner join rental on inventory.inventory_id = rental.inventory_id
+inner join film_category on film_category.film_id = inventory.film_id
+inner join category on category.category_id = film_category.category_id
+group by store.store_id,category
+order by store.store_id , num_rentals desc, category)t
+where t.nth<=5;
