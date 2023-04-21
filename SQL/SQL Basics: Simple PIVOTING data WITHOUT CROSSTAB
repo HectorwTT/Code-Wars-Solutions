@@ -1,0 +1,7 @@
+select name,
+count(detail) filter (where detail='good')as good,
+count(detail) filter (where detail='ok')as ok,
+count(detail) filter (where detail='bad')as bad
+from products inner join details on products.id = details.product_id
+group by name
+order by name;
