@@ -1,0 +1,18 @@
+with recursive employee_levels(level, id, first_name, last_name, manager_id) as(
+  select 1::integer as level,
+         id,
+         first_name,
+         last_name, 
+         manager_id  
+         from employees
+         where manager_id is null
+   union
+  select el.level+1 as level,
+         e.id,
+         e.first_name,
+         e.last_name, 
+         e.manager_id  
+         from employees e,employee_levels el  where e.manager_id= el.id 
+  
+)
+select * from employee_levels;
