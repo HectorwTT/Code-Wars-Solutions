@@ -1,0 +1,10 @@
+CREATE EXTENSION tablefunc;
+SELECT * 
+FROM  CROSSTAB (
+      'SELECT p.name, d.detail, COUNT(d.id)
+      FROM products p
+      JOIN details d
+      ON p.id = d.product_id
+      GROUP BY p.name, d.detail
+      ORDER BY p.name, d.detail')
+AS summary (name text, bad bigint, good bigint, ok bigint)
