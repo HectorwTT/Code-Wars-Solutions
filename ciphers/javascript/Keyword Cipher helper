@@ -24,8 +24,7 @@ class KeywordCipher {
  
   encode(str) {
     let cipher ="";
-    let str1 = str.toLowerCase();
-    for(let i=0;i<str1.length;i++){
+    for(let i=0;i<str.length;i++){
       let ch = str.charAt(i);
       let chval = str.charCodeAt(i);
       let abc = this.abc.toLowerCase();
