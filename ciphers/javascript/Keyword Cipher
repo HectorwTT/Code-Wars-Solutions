@@ -1,0 +1,32 @@
+ function keywordCipher(string, keyword){
+    let newstr ="";
+    let alphabet ="abcdefghijklmnopqrstuvwxyz";
+    for(let a=0;a<keyword.length;a++){
+      let char = keyword.charAt(a);
+      let nextindex = keyword.substring(a+1).indexOf(char);
+      let previndex=0;
+      if(a>0)previndex = keyword.substring(0,a).indexOf(char);
+      else previndex =-1;
+      if(a==0 ||(nextindex ==-1 && previndex==-1) || previndex ==-1)newstr+=char;
+    }
+    let keyword1 = newstr;
+    for(let i=0;i<alphabet.length;i++){
+      let ch= alphabet.charAt(i);
+      if(keyword1.indexOf(ch)==-1)keyword1+=ch;
+    }
+    if(keyword1.length!= alphabet.length) keyword1 = keyword1.substring(0,alphabet.length);
+    let cipher ="";
+    let str1 = string.toLowerCase();
+    for(let i=0;i<str1.length;i++){
+      let ch1 = str1.charAt(i);
+      let chval = str1.charCodeAt(i);
+      if((chval>=97 && chval <=122)){
+       let index = alphabet.indexOf(ch1);
+       let newindex = keyword1.indexOf(ch1);
+       let newch = keyword1.charAt(index);
+       if(newindex!=-1)cipher+= newch;
+       else cipher+=ch1;
+      } else cipher += ch1;
+    }
+    return cipher;
+}
