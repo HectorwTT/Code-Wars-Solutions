@@ -1,0 +1,60 @@
+class KeywordCipher {
+  constructor(abc,keyword){
+    this.abc=abc;
+    this.keyword=this.formCipher(keyword);
+  }
+  formCipher (str){
+    let newstr ="";
+    for(let a=0;a<str.length;a++){
+      let char = str.charAt(a);
+      let nextindex = str.substring(a+1).indexOf(char);
+      let previndex=0;
+      if(a>0)previndex = str.substring(0,a).indexOf(char);
+      else previndex =-1;
+      if(a==0 ||(nextindex ==-1 && previndex==-1) || previndex ==-1)newstr+=char;
+    }
+    let cipher = newstr;
+    for(let i=0;i<this.abc.length;i++){
+      let ch= this.abc.charAt(i);
+      if(cipher.indexOf(ch)==-1)cipher+=ch;
+    }
+    if(cipher.length!= this.abc.length) return cipher.substring(0,this.abc.length);
+    else return cipher;
+  }
+ 
+  encode(str) {
+    let cipher ="";
+    let str1 = str.toLowerCase();
+    for(let i=0;i<str1.length;i++){
+      let ch = str1.charAt(i);
+      let chval = str1.charCodeAt(i);
+      let abc = this.abc.toLowerCase();
+      if((chval>=97 && chval <=122)){
+       let index = this.abc.indexOf(ch);
+       let newindex = this.keyword.indexOf(ch);
+       let newch = this.keyword.charAt(index);
+       if(newindex!=-1)cipher+= newch;
+       else cipher+=ch;
+      } else cipher += ch;
+      
+    }
+    return cipher;
+  }
+  decode(str) {
+     let plain ="";
+     let str1=str.toLowerCase();
+    for(let i=0;i<str.length;i++){
+      let ch = str.charAt(i);
+      let chval = str.charCodeAt(i);
+      let keyword = this.keyword.toLowerCase();
+      if( (chval>=97 && chval <=122) ||(chval>=65 && chval <=90)){
+       let index = this.keyword.indexOf(ch);
+       let newindex = this.abc.indexOf(ch);
+       let newch = this.abc.charAt(index);
+       if(index!=-1 )plain+= newch;
+       else plain+=ch;
+      }else plain +=ch;  
+    }
+   return plain;
+  }
+}
