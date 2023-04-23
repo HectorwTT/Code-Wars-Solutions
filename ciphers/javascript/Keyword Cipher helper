@@ -26,10 +26,10 @@ class KeywordCipher {
     let cipher ="";
     let str1 = str.toLowerCase();
     for(let i=0;i<str1.length;i++){
-      let ch = str1.charAt(i);
-      let chval = str1.charCodeAt(i);
+      let ch = str.charAt(i);
+      let chval = str.charCodeAt(i);
       let abc = this.abc.toLowerCase();
-      if((chval>=97 && chval <=122)){
+      if((chval>=97 && chval <=122) || (chval >=65 && chval<=90)){
        let index = this.abc.indexOf(ch);
        let newindex = this.keyword.indexOf(ch);
        let newch = this.keyword.charAt(index);
@@ -41,8 +41,7 @@ class KeywordCipher {
     return cipher;
   }
   decode(str) {
-     let plain ="";
-     let str1=str.toLowerCase();
+    let plain ="";
     for(let i=0;i<str.length;i++){
       let ch = str.charAt(i);
       let chval = str.charCodeAt(i);
