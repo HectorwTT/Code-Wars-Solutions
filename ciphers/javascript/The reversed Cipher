@@ -1,0 +1,15 @@
+function encode(plaintext){
+  const words = plaintext.split(" ");
+  const newwords=[];
+  for(let i=0;i<words.length;i++){
+    let word = words[i];
+    let newword ="";
+    for(let j=word.length-2;j>=0;j--){
+      let ch =word.charAt(j);
+      newword +=ch;
+    }
+    newword+=word.charAt(word.length-1);
+    newwords[i] = newword;
+  }
+  return newwords.join(" ");
+}
