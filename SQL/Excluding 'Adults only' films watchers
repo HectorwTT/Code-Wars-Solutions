@@ -1,0 +1,18 @@
+SELECT
+    customer.customer_id,
+    first_name || ' ' || last_name AS full_name,
+    COUNT(*) AS total_rentals
+FROM
+    customer
+    INNER JOIN rental ON customer.customer_id = rental.customer_id
+    INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id
+    INNER JOIN film ON inventory.film_id = film.film_id
+GROUP BY
+    customer.customer_id,
+    first_name || ' ' || last_name
+HAVING
+    COUNT(CASE WHEN film.rating = 'NC-17' THEN 1 ELSE NULL END) = 0
+ORDER BY
+    COUNT(*) DESC,
+    last_name
+LIMIT 5;
