@@ -19,11 +19,6 @@ class TreeNode {
     ...
 }
 */
-
-
-
-
-
 class Solution {
     static int maxSum(TreeNode root) {
         if (root == null) return 0;
