@@ -1,2 +1,2 @@
 # Code-Wars-Solutions
-Solutions for different problems on the programming site codewars
+This repository contains some of my solutions to problems on the coding website , codewars
