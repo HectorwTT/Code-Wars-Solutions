@@ -1,0 +1,23 @@
+function solution (roman) {
+       const values = new Map();
+       values.set('I',1);
+       values.set('V',5);
+       values.set('X',10);
+       values.set('L',50);
+       values.set('C',100);
+       values.set('D',500);
+       values.set('M',1000);
+       let pointer= roman.length-1;
+       let sum =0;
+       let curr=0;
+       let previous =0;
+       while(pointer >=0){
+           let numeral = roman.charAt(pointer);
+           curr = values.get(numeral);
+           if (curr < previous) curr = -1*curr;
+           sum += curr;
+           previous = curr;
+           pointer = pointer -1;
+       }
+     return sum;
+}
