@@ -1,0 +1,16 @@
+import java.util.*;
+public class Kata {
+  public static int findEvenIndex(int[] arr) {
+    int sum = (int) Arrays.stream(arr).sum();
+    int curr=0;
+    int leftsum;
+    int rightsum;
+    for(int i=0;i<arr.length;i++){
+      curr+=arr[i];
+      leftsum = curr-arr[i];
+      rightsum = sum-curr;
+      if(leftsum==rightsum) return i;    
+    }
+    return -1;
+  }
+}
