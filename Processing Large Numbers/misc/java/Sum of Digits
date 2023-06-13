@@ -1,0 +1,18 @@
+public class DRoot {
+  public static int digital_root(int n) {
+    if (n <10) return n;
+    else{
+      if (n>10 && n<100){
+        if ((n%10 +n/10)<10) return n%10 +n/10;
+      }
+      int sumOfDigits =0;
+      int number =n;
+      while (number !=0){
+        int mod = number %10;
+        sumOfDigits+=mod;
+        number=number/10;
+      }
+       return digital_root(sumOfDigits);
+    }
+  }
+}
