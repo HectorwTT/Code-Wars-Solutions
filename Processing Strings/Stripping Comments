@@ -1,0 +1,17 @@
+public class StripComments {
+ public static String stripComments(String text, String[] commentSymbols) {
+     String [] words = text.split("\n");
+     String []newWords= new String[words.length];
+     for (int i=0; i<words.length;i++){
+       for(int j=0;j<commentSymbols.length;j++){
+         int index =0;
+         if (words[i].contains(commentSymbols[j])){
+           index= words[i].indexOf(commentSymbols[j]);
+           if (index !=-1)newWords[i]= words[i].substring(0,index).replaceAll("\\s+$","");
+         }
+        }
+       if (newWords[i] == null) newWords[i] = words[i].replaceAll("\\s+$","");       
+     }    
+    return String.join("\n",newWords);
+	}
+}
