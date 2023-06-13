@@ -1,0 +1,16 @@
+public class Order {
+  public static String order(String words) {
+    String []wordList = words.split(" ");
+    if (words.equals(""))return "";
+    String []wordList1 = new String[wordList.length];
+    String finalWord="";
+    for(int i=0;i<wordList1.length;i++){
+      for(int j=0;j<wordList.length;j++){
+        if (wordList[j].contains(""+(i+1)))wordList1[i]= wordList[j];
+        
+      }
+    }
+     finalWord = String.join(" ",wordList1);
+    return finalWord;
+  }
+}
