@@ -1,0 +1,15 @@
+public class Kata {
+    public static double findUniq(double arr[]) {
+      double first= arr[0];
+      double second = arr[1];
+      for (int i=2;i<arr.length;i++){
+         if(first == second){
+           if (arr[i]!=second)return arr[i];
+         } else{
+           if (arr[i]==first)return second;
+           else return first;
+         }
+      }
+      return  0.0;
+    }
+}
