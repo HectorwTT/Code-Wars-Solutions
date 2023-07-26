@@ -1,0 +1,21 @@
+public class Kata {
+ public static String high(String s) {
+    String[] words = s.split(" ");
+    String highWord ="";
+    int maxScore =0;
+    for(int i=0;i<words.length;i++){
+      String word = words[i];
+      int score =0;
+      for(int j=0;j<word.length();j++){
+        char c = word.charAt(j);
+        int val = c-96;
+        score += val;
+      }
+      if (score > maxScore){
+        maxScore= score;
+        highWord = word;
+      }
+    }
+    return highWord;
+  }
+}
