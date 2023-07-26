@@ -1,0 +1,25 @@
+public class Solution {
+ public static String dashatize(int num) {
+      String str =""+num;
+      String output ="";
+      char dash ='-';
+      if (num<0) str = str.substring(1);
+      for(int i=0;i<str.length();i++){
+        char c = str.charAt(i);
+        if (Character.isDigit(c)){
+          int val = Character.getNumericValue(c);
+          if (val%2 ==1){
+            output +="-";
+            output +=c;
+            output+="-";
+          }
+          else output +=c;
+        } else output +=c;
+      }
+      if (output.charAt(0)=='-') output = output.substring(1);
+      if (output.charAt(output.length()-1)=='-') output = output.substring(0,output.length()-1);
+      output = output.replaceAll("--","-");
+      return output;
+    }
+
+}
