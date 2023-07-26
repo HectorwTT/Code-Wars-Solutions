@@ -1,0 +1,18 @@
+import java.util.*;
+class SumDigPower {
+     public static List<Long> sumDigPow(long a, long b) {
+      List<Long> list = new ArrayList<Long> ();
+      for (long i =a;i<=b;i++){
+        String num =""+i;
+        long val =0;
+        for(int j=0;j<num.length();j++){
+          char c = num.charAt(j);
+          long cval = c-48;
+          long newval = (long)Math.pow(cval,j+1);
+          val += newval;
+        }
+        if(val == i)list.add(val);
+      }
+      return list;
+    }
+}
