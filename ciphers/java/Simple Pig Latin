@@ -1,0 +1,18 @@
+public class PigLatin {
+    public static String pigIt(String str) {
+        String [] words = str.split(" ");
+        String [] newwords = new String[words.length];
+        for(int i =0;i<words.length;i++){
+          String word = words[i];
+          char first = word.charAt(0);
+           if (word.length()==1 && (first<65 || (first >90 && first <97) || (first >122)) ) newwords[i] = words[i];
+          else{
+               String suffix = first +"ay";
+               String newword = word.substring(1)+suffix;
+               newwords[i]= newword;
+          }
+          
+        }
+      return String.join(" ",newwords);
+    }
+}
