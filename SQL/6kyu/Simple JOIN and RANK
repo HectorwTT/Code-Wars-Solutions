@@ -1,0 +1,6 @@
+select people.* ,count(sale)as sale_count, RANK () OVER ( 
+		PARTITION BY count(sale)
+		ORDER BY count(sale) DESC
+	) sale_rank 
+from people inner join sales on sales.people_id = people.id
+group by people.id,people.name;
