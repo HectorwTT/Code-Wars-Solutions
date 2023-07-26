@@ -1,7 +1,11 @@
-SELECT products.name as product_name,cast(EXTRACT(year from sales.date)as integer)as year,cast(EXTRACT(month from sales.date)as integer)as month,
-cast(EXTRACT(day from sales.date)as integer )as day,cast (sum(sales_details.count * products.price) as numeric )as total
-FROM products inner join sales_details on products.id = sales_details.product_id
-inner join sales on sales_details.sale_id = sales.id 
+SELECT products.name as product_name,cast(EXTRACT(year from sales.date)as integer)as year,
+ cast(EXTRACT(month from sales.date)as integer)as month,
+ cast(EXTRACT(day from sales.date)as integer )as day,
+ cast (sum(sales_details.count * products.price) as numeric )as total
+FROM products 
+inner join sales_details 
+on products.id = sales_details.product_id
+inner join sales 
+on sales_details.sale_id = sales.id 
 group by product_name,rollup(year,month,day)
-order by product_name,year,month,day
-;
+order by product_name,year,month,day;
