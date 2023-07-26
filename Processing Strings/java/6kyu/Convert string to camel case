@@ -1,0 +1,15 @@
+import java.lang.StringBuilder;
+class Solution{
+  static String toCamelCase(String s){
+    String word = "";
+    if(s.indexOf("-")!= -1) word = s.replaceAll("-","_");
+    else word = s;
+    String [] words = word.split("_");
+    String []newWords = new String[words.length];
+    newWords[0]=words[0];
+    for(int i =1;i< words.length;i++){
+      newWords[i]= words[i].substring(0,1).toUpperCase()+words[i].substring(1);
+    }
+    return String.join("",newWords);
+  }
+}
