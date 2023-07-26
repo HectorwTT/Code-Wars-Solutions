@@ -1,0 +1,10 @@
+select sc1.sc_rank as rank,sc1.id as student_id,sc1.name,sc1.total_score from
+(select sc.id,sc.name,math_score+science_score as total_score,
+rank() over
+( 
+ order by math_score+science_score desc,id )sc_rank
+ from (select students.id,name,
+sum(score) filter (where course_name ='Math') as math_score,
+sum(score) filter (where course_name ='Science') as science_score
+from students inner join courses on students.id= courses.student_id
+group by students.id,name) sc)sc1 
