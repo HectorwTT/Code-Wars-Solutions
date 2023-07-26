@@ -1,0 +1,28 @@
+import java.util.List;
+public class PaginationHelper<I> {
+  private List<I> collection;
+  private int itemsPerPage;
+  public PaginationHelper(List<I> collection, int itemsPerPage) {
+    this.collection = collection;
+    this.itemsPerPage = itemsPerPage; 
+  }
+  public int itemCount() {
+      return collection.size();
+  }
+  public int pageCount() {
+     int withMaxItems = collection.size()/itemsPerPage;
+     if (collection.size()%itemsPerPage !=0) withMaxItems +=1;
+     return withMaxItems;
+  }
+  public int pageItemCount(int pageIndex) {
+    if(pageIndex >= pageCount() ||pageIndex <0) return -1;
+    if (pageIndex ==  pageCount()-1){
+      return itemCount() - (this.itemsPerPage * (pageCount()-1));
+    } 
+     else return itemsPerPage;
+  }
+  public int pageIndex(int itemIndex) {
+     if(itemIndex <0 || itemIndex >= itemCount())return -1;
+    else return itemIndex/this.itemsPerPage;
+  }
+}
