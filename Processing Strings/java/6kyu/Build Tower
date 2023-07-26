@@ -1,0 +1,17 @@
+public class Kata
+{
+  public static String[] towerBuilder(int nFloors)
+  {
+    String tower[] = new String [nFloors];
+    int numberOfAsteriks =0;
+    int numberOfCharacters = 2*nFloors-1;
+    for (int i=0;i<nFloors;i++){
+     numberOfAsteriks = 2*i+1;
+     String asteriks ="*".repeat(numberOfAsteriks);
+     String spacesBeforeAsteriks =" ".repeat((numberOfCharacters -numberOfAsteriks)/2);
+     String spacesAfterAsteriks =" ".repeat((numberOfCharacters - numberOfAsteriks)/2);
+     tower[i]= spacesBeforeAsteriks+asteriks+spacesAfterAsteriks;
+    }
+    return tower;
+  }
+}
