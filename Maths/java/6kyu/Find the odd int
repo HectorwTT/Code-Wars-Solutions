@@ -1,0 +1,19 @@
+import java.util.Arrays;
+public class FindOdd {
+	public static int findIt(int[] a) {
+    Arrays.sort(a);
+    int newnumber = a[0];
+    int numOfTimes = 1;
+    int startpos = 0; 
+    for(int i=1;i<a.length;i++){
+      if(a[i]!=a[i-1]){
+        if(numOfTimes%2==1) return newnumber;
+        newnumber = a[i];
+        numOfTimes=1;
+        startpos= i;
+      } else numOfTimes++;
+    }
+    if(numOfTimes%2 ==1) return newnumber;
+    else return -1;
+  }
+}
