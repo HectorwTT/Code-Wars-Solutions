@@ -1,0 +1,7 @@
+select 
+case
+when clan ='' then '[no clan specified]'
+else clan
+end clan,count(name) as total_people,sum(points)as total_points,rank()over(order by sum(points) desc)
+from people group by clan
+order by total_points desc;
