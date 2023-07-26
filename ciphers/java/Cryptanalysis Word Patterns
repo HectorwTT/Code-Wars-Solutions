@@ -1,0 +1,25 @@
+class Crypto {
+ public static String wordPattern(final String word){
+    // Your code here!
+    int currentcode =0;
+    String wordPattern =""+currentcode;
+    String newword = word.toLowerCase();
+    int []cores = new int[newword.length()];
+    for(int i=1;i<newword.length();i++){
+      char current = newword.charAt(i);
+      if(!newword.substring(0,i).contains(""+current)){
+        currentcode++;
+        wordPattern+="."+currentcode;
+        cores[i]=currentcode;
+      }
+      else{
+        int index = newword.indexOf(""+current);
+        int previous = cores[index];
+        wordPattern += "."+previous;
+      }
+       
+    }
+    return wordPattern;
+    
+  }
+}
