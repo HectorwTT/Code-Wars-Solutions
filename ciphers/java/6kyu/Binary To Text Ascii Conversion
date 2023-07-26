@@ -1,12 +1,12 @@
 class Solution {
- public static String binaryToText(String binary) {//get a plaintext string for a binary representation of ascii
+  public static String binaryToText(String binary) {
     if (binary.equals("")) return "";
     if (binary.length()%8 !=0) return "";
     int firstpos =0;
     String ascii ="";
     int sum =0;
-    for(int i =0; i< binary.length();i++){//go through string get each 8 bits, convert into ascii value and form the string
-     int curr = i;
+    for(int i =0; i< binary.length();i++){
+     int curr = i;  
      int bit = Character.getNumericValue(binary.charAt(i)); 
      int digvalue = bit* (int)Math.pow(2,7-(curr-firstpos));
      sum += digvalue;
@@ -15,8 +15,8 @@ class Solution {
           char c =(char)sum;
           ascii +=c;
           sum =0;
-     }
+      }
     }
     return ascii;
- }
+  }
 }
