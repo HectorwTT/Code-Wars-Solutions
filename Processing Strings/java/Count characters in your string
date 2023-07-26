@@ -1,0 +1,26 @@
+import java.util.Map;
+import java.util.HashMap;
+public class Kata {
+    public static Map<Character, Integer> count(String str) {
+        int count [] = new int [26];
+        Map<Character,Integer> chars = new HashMap<>();
+        if(str.length()==0) return chars;
+        String str1= str.toLowerCase();
+        
+        for(int i=0;i<str1.length();i++){
+          char c= str.charAt(i);
+          int val = c-97;
+          count[val]++;
+          if(i==str1.length()-1){
+            for(int j=0;j<count.length;j++){
+              if(count[j]!=0){
+                int val1 =97+j;
+                char c1 =(char)val1;
+                chars.put(c1,count[j]);
+              }
+            }
+          }
+        }
+      return chars;
+    }
+}
