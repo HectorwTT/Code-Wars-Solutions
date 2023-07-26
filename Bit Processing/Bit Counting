@@ -1,0 +1,12 @@
+public class BitCounting {
+ public static int countBits(int n){
+		int numberOfOnes =0;
+    int num = n;
+    while (num !=0){
+      int mod = num %2;
+      if(mod==1)numberOfOnes++;
+      num = num/2;
+    }
+    return numberOfOnes;
+	}	
+}
