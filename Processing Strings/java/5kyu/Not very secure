@@ -1,0 +1,12 @@
+public class SecureTester{
+  public static boolean alphanumeric(String s){
+    String str= s.replaceAll("[a-zA-Z]","");
+    String str1 = str.replaceAll("[0-9]","");
+    int indexwhitespace = s.indexOf(" ");
+    int indexunderscore=s.indexOf("_");
+    boolean hasOneDigit = s.length()>=1;
+    boolean hasNoSpacesAndUnderscores = (indexwhitespace==-1)&&(indexunderscore==-1);
+    boolean hasOnlyAllowedChars= str1.length()==0;
+    return hasOneDigit && hasNoSpacesAndUnderscores && hasOnlyAllowedChars;
+  }
+}
