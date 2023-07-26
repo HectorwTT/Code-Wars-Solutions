@@ -1,0 +1,22 @@
+function groupByCommas(n) {
+  var nstr=""+n;
+  var numberOfDigits=0;
+  var nstr1="";
+  
+  for(let i=nstr.length-1;i>=0;i--){
+    var ch = nstr.charAt(i);
+    if(numberOfDigits<3) {
+      nstr1=ch+nstr1;
+      numberOfDigits++;
+      
+    }
+    else {
+      nstr1= ","+nstr1;
+      nstr1=ch+nstr1;
+      numberOfDigits=1;
+      
+    } 
+  }
+
+  return nstr1;
+}
