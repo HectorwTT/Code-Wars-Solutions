@@ -1,0 +1,14 @@
+public class BasicEncrypt {
+ public String encrypt(String text, int rule) {
+  String encrypted="";
+  for(int i=0;i<text.length();i++){
+   char c = text.charAt(i);
+   int val =c;
+   int encval = c+ rule;
+   if (encval >255) encval = (encval-256)%256;
+    char newchar = (char)encval;
+    encrypted +=newchar;
+   }
+    return encrypted;
+  }
+}
