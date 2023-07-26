@@ -1,0 +1,17 @@
+Create view qualified_members as (
+select member_id as id,department_id as department_id,sum(price)as members_total from 
+sales inner join products on sales.product_id=products.id
+group by member_id,department_id);
+Create view qualified_departments as(
+select sales.department_id,sum(price)as departments_total from 
+sales inner join products on sales.product_id= products.id
+group by sales.department_id);
+Create view members_approved_for_voucher as 
+(select members.id as id,members.name as name,
+members.email as email,sum(qualified_members.members_total) as total_spending
+from members inner join qualified_members on members.id = qualified_members.id
+ and qualified_members.department_id 
+in(select department_id from qualified_departments where departments_total > 10000)
+group by  members.id,members.name,
+members.email );
+select id,name,email,total_spending from members_approved_for_voucher where total_spending >1000  order by id;
