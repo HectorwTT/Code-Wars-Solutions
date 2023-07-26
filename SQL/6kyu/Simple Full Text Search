@@ -1,0 +1,3 @@
+select id,name,price 
+from product 
+where to_tsvector(name)@@to_tsquery('Awesome') = true ;
