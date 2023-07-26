@@ -1,0 +1,9 @@
+select top_half.id as id,heads,arms,legs,tails,
+case 
+ when heads > arms then 'BEAST'
+ when tails > legs then 'BEAST'
+ else 'WEIRDO'
+end species
+from top_half inner join bottom_half
+on top_half.id = bottom_half.id 
+order by species;
