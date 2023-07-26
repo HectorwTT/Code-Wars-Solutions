@@ -6,4 +6,4 @@ select category_id,title,views,id as post_id
   order by views desc,id 
   fetch first 2 rows only
   ) p  on true
-order by c.category ,views desc,id
+order by c.category ,views desc,id;
