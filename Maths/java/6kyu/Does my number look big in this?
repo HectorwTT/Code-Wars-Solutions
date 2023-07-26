@@ -1,0 +1,15 @@
+public class NumberUtils {
+    public static boolean isNarcissistic(int number) {
+      String str = ""+ number;
+      int length = str.length();
+      int sum =0;
+      int num = number;
+      while(num!=0){
+       int mod = num%10;
+       int modToNPower = (int)Math.pow(mod,length);
+       sum+= modToNPower;
+       num /= 10;
+      }
+      return sum == number;
+    }
+}
