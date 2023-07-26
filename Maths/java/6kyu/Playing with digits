@@ -1,0 +1,15 @@
+public class DigPow {
+	public static long digPow(int n, int p) {
+    String numval =""+n;
+    long sumOfDigits = 0;
+    for(int i=0;i<numval.length();i++){
+      long digValue=  (long)Math.pow(numval.charAt(i)-48,p+i);
+      sumOfDigits +=digValue;
+    }
+    long k = sumOfDigits/n;
+    long mod = sumOfDigits %n;
+    if(mod ==0) return k;
+    else return -1;
+	}
+	
+}
