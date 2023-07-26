@@ -1,0 +1,7 @@
+select film.title 
+from film inner join film_actor 
+on film.film_id =film_actor.film_id
+where film_actor.actor_id =105 and film_actor.film_id 
+in(select film_id from film_actor where actor_id = 122)
+group by film.title
+order by film.title ;
