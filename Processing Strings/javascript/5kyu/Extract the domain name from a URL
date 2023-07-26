@@ -1,0 +1,13 @@
+function domainName(url){
+  let wwwindex =url.indexOf("www.");
+  let colonindex=url.indexOf(":");
+  if(wwwindex==-1 && colonindex==-1) return url.substring(0,url.indexOf("."));
+  let index = 0;
+  let index1 = url.indexOf("/")+2;
+  if (wwwindex==-1) index = index1;
+  else index = url.indexOf(".")+1;
+  let str = url.substring(index);
+  let index2= str.indexOf(".");
+  let domain = str.substring(0,index2);
+  return domain;
+}
