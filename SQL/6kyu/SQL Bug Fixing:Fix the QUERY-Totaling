@@ -1,0 +1,8 @@
+SELECT 
+  cast (s.transaction_date as date) as day,
+  d.name as department,
+  count (s.product_id) as sale_count
+  FROM sale s
+    inner JOIN department d on s.department_id = d.id
+  group by  day,department
+  order by day;
