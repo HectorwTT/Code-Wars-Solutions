@@ -1,0 +1,2 @@
+INSERT into participants values('Hector',41,true);
+select * from participants;
