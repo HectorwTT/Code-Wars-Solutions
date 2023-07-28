@@ -1,0 +1,10 @@
+public class Kata
+{
+  public static string Remove(string s)
+  {
+    string str =s;
+    int index = s.LastIndexOf("!");
+    if (index ==s.Length -1) str =s.Substring(0,index);
+    return str;
+  }
+}
