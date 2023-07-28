@@ -1,0 +1,11 @@
+public class Solution{
+  public static long sumCubes(long n)
+  {
+    long sumOfCubes =0;
+    for (long i=1;i<=n;i++){
+      long cube = i * i*i;
+      sumOfCubes += cube;   
+    }
+    return sumOfCubes;
+  }
+}
