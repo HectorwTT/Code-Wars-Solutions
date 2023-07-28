@@ -1,0 +1,9 @@
+using System;
+public static class Kata
+{
+ public static string Usdcny(int usd)
+   {
+      decimal money= Decimal.Round(usd * 6.75M,2);
+      return money +" Chinese Yuan";
+   }
+}
