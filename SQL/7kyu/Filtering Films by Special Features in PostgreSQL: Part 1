@@ -1,0 +1,3 @@
+select film_id, title, special_features from film
+where 'Trailers' = any(special_features) and 'Deleted Scenes' = any(special_features)
+order by title, film_id;
