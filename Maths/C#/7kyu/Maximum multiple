@@ -1,0 +1,11 @@
+public class Kata
+{
+    public static int MaxMultiply(int divisor, int bound)
+    {   
+       int maxN=divisor;
+        for (int i=divisor;i<=bound;i++){
+          if (i%divisor ==0) maxN=i;
+        }
+      return maxN;
+    }
+}
