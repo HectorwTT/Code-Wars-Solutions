@@ -1,0 +1,9 @@
+select name,
+sum(won)as won,sum(lost)   as lost 
+from fighters inner join winning_moves 
+on fighters.move_id = winning_moves.id
+where fighters.move_id  in(select id from winning_moves where move not in('Hadoken','Shouoken','Kikoken'))
+
+group by name
+order by won desc
+limit 6;
