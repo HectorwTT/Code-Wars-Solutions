@@ -1,0 +1,8 @@
+select
+id, name,
+case 
+  when position(',' in characteristics) = 0 then characteristics
+  else substring(characteristics, 1, position(',' in characteristics)-1)
+end characteristic
+from monsters 
+order by id;
