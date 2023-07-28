@@ -1,0 +1,38 @@
+using System;
+public static class Kata
+{
+  public static int Add(int a, int b)
+    {
+       return a+b;
+    }
+    
+  public static int Multiply(int a, int b)
+    {
+       return a *b;
+    }
+  
+  public static int Divide(int a, int b)
+    {
+       return a/b;
+    }
+  
+  public static int Mod(int a, int b)
+    {
+       return a%b;
+    }
+  
+  public static int Exponent(int a, int b)
+    {
+       int a1 = a;
+       if (b==0)return 1;
+       if (b==1)return a;
+       for(int i=1;i<b;i++) a1 = a1*a;
+       return a1;
+    }
+  
+  public static int Subt(int a, int b)
+    {
+       return a-b;
+    }
+  
+}
