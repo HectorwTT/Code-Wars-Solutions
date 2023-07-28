@@ -1,0 +1,1 @@
+select (names.prefix ||' '||names.first ||' '|| names.last||' '||names.suffix) as title  from names;
