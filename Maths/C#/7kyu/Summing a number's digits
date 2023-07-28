@@ -1,0 +1,14 @@
+public class Kata
+{
+  public static int SumDigits(int number)
+  {
+     if (number<0) number= number * -1;
+    int sum = 0;
+    while(number !=0){
+      int mod = number % 10;
+      sum += mod;
+      number = number/10;
+    }
+    return sum;
+  }
+}
