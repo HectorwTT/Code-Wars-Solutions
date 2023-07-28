@@ -1,0 +1,4 @@
+select products.*,companies.name as company_name
+from products
+inner join companies
+on products.company_id = companies.id;
