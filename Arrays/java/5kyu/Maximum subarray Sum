@@ -1,0 +1,14 @@
+import java.util.*;
+public class Max {
+  public static int sequence(int[] arr) {
+   if (arr.length==0 ||
+         Arrays.stream(arr).filter(n->n<0).count()==arr.length)return 0;
+     int max = arr[0];
+     int cur = max;
+     for(int i = 1 ; i < arr.length ; i++){
+        cur = Math.max(arr[i],arr[i]+cur);
+        max = Math.max(cur,max);
+     }
+     return max;
+    }
+  }
