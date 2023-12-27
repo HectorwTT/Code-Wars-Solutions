@@ -1,0 +1,90 @@
+import java.util.*;
+
+
+public class ObservedPin {
+
+ public static List<String> getPINs(String observed){
+  observed= observed.toLowerCase();
+  if(observed.equals("")) return new ArrayList<>();
+  else{
+   HashMap<Character,List<String>> letters = new HashMap<>();
+   List<String> one= new ArrayList<>();
+   one.add("1");
+   one.add("2");
+   one.add("4");
+   List<String> two= new ArrayList<>();
+   two.add("1");
+   two.add("2");
+   two.add("3");
+   two.add("5");
+   List<String> three= new ArrayList<>();
+   three.add("2");
+   three.add("3");
+   three.add("6");
+   List<String> four= new ArrayList<>();
+   four.add("1");
+   four.add("4");
+   four.add("5");
+   four.add("7");
+   List<String> five= new ArrayList<>();
+   five.add("2");
+   five.add("4");
+   five.add("5");
+   five.add("6");
+   five.add("8");
+   List<String> six= new ArrayList<>();
+   six.add("3");
+   six.add("5");
+   six.add("6");
+   six.add("9");
+   List<String> seven= new ArrayList<>();
+   seven.add("4");
+   seven.add("7");
+   seven.add("8");
+   List<String> eight= new ArrayList<>();
+   eight.add("5");
+   eight.add("7");
+   eight.add("8");
+   eight.add("9");
+   eight.add("0");
+   List<String>nine= new ArrayList<>();
+   nine.add("6");
+   nine.add("8");
+   nine.add("9");
+   List<String>zero= new ArrayList<>();
+   zero.add("8");
+   zero.add("0");
+   letters.put('1',one);
+   letters.put('2',two);
+   letters.put('3',three);
+   letters.put('4',four);
+   letters.put('5',five);
+   letters.put('6',six);
+   letters.put('7',seven);
+   letters.put('8',eight);
+   letters.put('9',nine);
+   letters.put('0',zero);
+   if(observed.length()==1){
+    List<String> listOfLetters= letters.get(observed.charAt(0));
+    return listOfLetters;
+   }else{
+    char first= observed.charAt(0);
+    List<String>combos=letters.get(first);
+    List<String> result = new ArrayList<>();
+    for(int i=0;i<combos.size();i++){
+     String digit=combos.get(i);
+     List<String>combos1 =getPINs(observed.substring(1));
+     for(int j=0;j<combos1.size();j++){
+      String combination1=combos1.get(j);
+      String newcombo=digit+combination1;
+      result.add(newcombo);
+     }
+    }
+    return result;
+  }
+}
+}
+// getPINs
+    
+    
+} // 
