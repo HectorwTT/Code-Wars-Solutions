@@ -1,0 +1,59 @@
+import java.util.Arrays;
+import java.util.Collections;
+public class Kata
+{
+    public static long nextSmaller(long n)
+    {
+      String nstr=""+n;
+      char[] nchars= nstr.toCharArray();
+      if(prev_permutation(nchars)){
+        if(nchars[0]=='0')return -1;
+        String nstr1=new String(nchars);
+        return Long.parseLong(nstr1);
+      }else return -1;
+    }
+          public static boolean prev_permutation(char[] arr) {
+         
+          // Find the non-increasing suffix
+        int n = arr.length;
+        int i = n - 2;
+        while (i >= 0 && arr[i] <= arr[i + 1]) {
+            i--;
+        }
+       
+          // If the entire array is non-increasing, it's the last permutation
+        if (i < 0) {
+            return false;
+        }
+       
+          // Find the rightmost element that's smaller than the pivot
+        int j = n - 1;
+        while (j > i && arr[j] >= arr[i]) {
+            j--;
+        }
+       
+          // Swap the pivot with the rightmost element that's smaller than the pivot
+        swap(arr, i, j);
+       
+          // Reverse the suffix
+        reverse(arr, i + 1, n - 1);
+        return true;
+      }
+     
+      // function for swapping
+      public static void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+     
+     // function for reversing
+     public static void reverse(char[] arr, int i, int j) {
+        while (i < j) {
+            swap(arr, i, j);
+            i++;
+            j--;
+        }
+    }
+}
+  
