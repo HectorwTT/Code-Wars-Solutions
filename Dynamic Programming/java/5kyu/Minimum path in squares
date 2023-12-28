@@ -1,0 +1,36 @@
+import java.util.*;
+public class MinPathSquare {
+    
+    public static int minPath(int[][] grid, int x, int y) {
+      List<List<Integer>> paths= new ArrayList<>();
+      for(int i=0;i<=y;i++){
+       List<Integer>path=new ArrayList<>();
+       for(int j=0;j<=x;j++){
+         path.add(grid[i][j]);
+       }
+        paths.add(path);
+      }   
+      int [][] newgrid=paths.stream()
+                .map(l -> l.stream().mapToInt(Integer::intValue).toArray())
+                .toArray(int[][]::new);
+      return minPathSum(newgrid);
+    }
+    
+    public static int minPathSum(int[][] grid) {
+        int [][] paths = new int[grid.length][grid[0].length];
+        paths[0][0]= grid[0][0];
+        for(int i=1;i<grid.length;i++){
+            paths[i][0]= grid[i][0]+ paths[i-1][0];
+        }
+        for(int j=1;j<grid[0].length;j++){
+            paths[0][j]= grid[0][j]+paths[0][j-1];
+        }
+        for(int i=1;i<grid.length;i++){
+            for(int j=1;j<grid[0].length;j++){
+                paths[i][j]= Math.min(paths[i][j-1],paths[i-1][j])+ 
+                              grid[i][j];
+            }
+        }
+        return paths[grid.length-1][grid[0].length-1];
+    }
+}
