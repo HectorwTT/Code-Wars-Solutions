@@ -1,0 +1,42 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class BalancedParens {
+    public static List <String> balancedParens (int n) {
+        List<List<String>> dp=new ArrayList();
+        List<String> zero= new ArrayList<>();
+        zero.add("");
+        List<String> one=new ArrayList<>();
+        one.add("()");
+        dp.add(zero);
+        dp.add(one);
+        for(int k=2;k<=n;k++){
+            int i=1;
+            int j=dp.size()-1;
+            HashSet<String> result=new HashSet();
+            while(i<=j){
+                List<String> list1=dp.get(i);
+                List<String> list2=dp.get(j);
+                for(int l=0;l<list1.size();l++){
+                    for(int m=0;m<list2.size();m++){
+                        result.add(list1.get(l)+list2.get(m));
+                        result.add(list2.get(m)+list1.get(l));
+                    }
+                }
+                i++;
+                j--;
+            }
+            j=dp.size()-1;
+            List<String> list2=dp.get(j);
+            for(int m=0;m<list2.size();m++){
+                result.add("("+list2.get(m)+")");
+            }
+            List<String> resultList=new ArrayList<>();
+            for(String str:result)
+                resultList.add(str);
+            dp.add(resultList);
+        }
+        return dp.get(n);
+    }
+}
