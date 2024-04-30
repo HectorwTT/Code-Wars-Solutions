@@ -1,6 +1,6 @@
 import java.util.*;
 public class EnoughIsEnough {
-	public static int[] deleteNth(int[] elements, int maxOccurrences) {
+ public static int[] deleteNth(int[] elements, int maxOccurrences) {
     if(maxOccurrences==0)return new int[0];
     List<Integer> list=new ArrayList<>();
     HashMap<Integer,Integer>map=new HashMap<>();
