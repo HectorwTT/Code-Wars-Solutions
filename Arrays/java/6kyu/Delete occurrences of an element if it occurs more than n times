@@ -1,0 +1,21 @@
+import java.util.*;
+public class EnoughIsEnough {
+	public static int[] deleteNth(int[] elements, int maxOccurrences) {
+    if(maxOccurrences==0)return new int[0];
+    List<Integer> list=new ArrayList<>();
+    HashMap<Integer,Integer>map=new HashMap<>();
+		for(int i=0;i<elements.length;i++){
+     if(map.containsKey(elements[i])){
+       if(map.get(elements[i])<maxOccurrences){
+         list.add(elements[i]);
+         map.replace(elements[i],map.get(elements[i])+1);
+       }
+     }else {
+      list.add(elements[i]);
+      map.put(elements[i],1); 
+     } 
+    }
+    int [] result= list.stream().mapToInt(Integer::intValue).toArray();
+    return result;
+	}
+}
